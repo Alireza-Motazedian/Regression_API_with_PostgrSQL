@@ -1,5 +1,3 @@
-   
-
 <div align="center">
     <img src="assets/logo.png" alt="Housing Price Regression API with PostgreSQL Integration" width="80%">
 </div>
