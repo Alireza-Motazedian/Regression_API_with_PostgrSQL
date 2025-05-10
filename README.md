@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="assets/logo.png" alt="Housing Price Regression API with PostgreSQL Integration" width="80%">
+    <img src="figures/Banner_Regression.png" alt="Banner_Regression" width="80%">
 </div>
 
 # Housing Price Regression API with PostgreSQL Integration
@@ -54,13 +54,9 @@
 </details>
 &nbsp;
 
-<details>
-  <summary><a href="#5-database-setup"><i><b>5. Database Setup</b></i></a></summary>
-  <div>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#51-direct-table-creation">5.1. Direct Table Creation</a><br>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#52-using-migrations">5.2. Using Migrations</a><br>
-  </div>
-</details>
+<div>
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href="#5-database-setup"><i><b>5. Database Setup</b></i></a>
+</div>
 &nbsp;
 
 <details>
@@ -90,127 +86,127 @@
 
 # 1. About this Repository
 
-This project demonstrates an end-to-end ML engineering workflow with database integration focused on a regression task. You can train a housing price prediction model, serve it using a FastAPI application, store predictions in a PostgreSQL database, and experiment interactively with Jupyter Notebook – all within Docker containers. The project is designed to be reproducible and maintainable.
+This repository showcases a complete ML engineering pipeline with integrated database support, focusing on a regression use case. It enables you to train a model for predicting housing prices, deploy it via a FastAPI service, persist predictions in a PostgreSQL database, and experiment interactively using Jupyter Notebooks—all within Docker containers. The setup is designed for both reproducibility and maintainability.
 
-The project provides a comprehensive learning resource with:
+Key features include:
 
-- **Core Application Components**:
-  - A well-structured FastAPI application with proper routing and middleware
-  - Complete PostgreSQL integration using SQLAlchemy ORM
-  - Properly organized database package with models, schemas, and CRUD operations
-  - Dependency injection for clean, testable code
+- **Core Application Elements**:
+  - A modular FastAPI application with organized routing and middleware
+  - Full PostgreSQL support through SQLAlchemy ORM
+  - A dedicated database package containing models, schemas, and CRUD logic
+  - Dependency injection for maintainable and testable code
 
-- **Docker Infrastructure**:
-  - Containerized services for API, database, and Jupyter notebook
-  - Volume mounting for data persistence and code accessibility
-  - Environment variable configuration for flexible deployment
-  - Health checks and container orchestration
+- **Dockerized Infrastructure**:
+  - Containers for the API, database, and Jupyter environment
+  - Volume mounts for persistent data and accessible code
+  - Environment variable management for flexible deployment
+  - Health checks and orchestration for robust operation
 
-- **Development Environment**:
-  - Jupyter notebooks for data exploration and model development
-  - Scripts for database setup and model training
-  - Complete test suite for API endpoints and database operations
+- **Development Tools**:
+  - Jupyter notebooks for data analysis and model development
+  - Scripts for database initialization and model training
+  - A comprehensive test suite for both API and database
 
 - **Documentation**:
-  - Extensive README files in each directory
-  - Detailed explanations of architectural decisions
-  - Complete setup and usage instructions
-  - Best practices for database integration
+  - Detailed README files in every directory
+  - Explanations of architectural choices
+  - Step-by-step setup and usage guides
+  - Best practices for integrating databases
 
-This project follows clean architecture principles with a clear separation of concerns, making it an excellent reference for building production-ready machine learning regression APIs with database integration.
+The project adheres to clean architecture principles, ensuring a clear separation of concerns. It serves as a practical reference for building production-grade machine learning regression APIs with database integration.
 
 ## 1.1. Who Is This Project For?
 
-This project is designed for anyone interested in machine learning, API development, database integration, or containerization with Docker. Whether you're a student, developer, or data scientist, this resource will guide you through building and deploying a machine learning API with database persistence using FastAPI, PostgreSQL, and Docker.
+This resource is intended for anyone interested in machine learning, API development, database integration, or Docker-based containerization. Whether you are a student, developer, or data scientist, this project will walk you through building and deploying a machine learning API with persistent storage using FastAPI, PostgreSQL, and Docker.
 
 ## 1.2. What Will You Learn?
 
-By the end of this project, you will:
-- Develop a foundational understanding of FastAPI and its setup
-- Learn how to integrate PostgreSQL with a FastAPI application
-- Understand how to containerize applications using Docker
-- Explore how to train and deploy simple machine learning models
-- Work with practical examples to build scalable APIs with data persistence
-- Gain insights into storing and retrieving ML predictions from a database
+By completing this project, you will:
+- Gain foundational knowledge of FastAPI and its configuration
+- Learn how to connect PostgreSQL to a FastAPI app
+- Understand how to containerize applications with Docker
+- Explore the process of training and deploying machine learning models
+- Work through practical examples for building scalable APIs with persistent data
+- Discover how to store and retrieve ML predictions from a database
 
 ## 1.3. Prerequisites
 
 This project is suitable for three types of learners:
 
-1. **For those familiar with Docker, FastAPI, and databases**: You can dive straight into the deployment phase. The examples and configurations provided will help you enhance your skills and explore best practices in building and deploying APIs with database integration.
+1. **If you already know Docker, FastAPI, and databases**: Jump straight to deployment. The provided examples and configurations will help you deepen your skills and explore best practices for API/database integration.
 
-2. **For those who know Docker and FastAPI but are new to database integration**: This project will introduce you to integrating PostgreSQL with FastAPI, guiding you through building and deploying an API with database persistence.
+2. **If you know Docker and FastAPI but are new to databases**: This project will introduce you to integrating PostgreSQL with FastAPI, guiding you through building and deploying an API with persistent storage.
 
-3. **For beginners**: This project is designed with you in mind. You'll start with the basics, learning how to set up Docker, FastAPI, and PostgreSQL, and then move on to building and deploying a machine learning model with database integration.
+3. **If you are a beginner**: The project is beginner-friendly. You'll start with the basics—setting up Docker, FastAPI, and PostgreSQL—then move on to building and deploying a machine learning model with database support.
 
-## 1.4. Contents of this Repository 
+## 1.4. Contents of this Repository
 
 ```
 Folder PATH listing
 .
-+---app                           <-- Contains the main application code
-|   |   config.py                 <-- Application configuration
-|   |   database.py               <-- Database connection configuration
-|   |   main.py                   <-- Main FastAPI application
-|   |   README.md                 <-- API Application documentation
++---app                           <-- Main application code
+|   |   config.py                 <-- App configuration
+|   |   database.py               <-- Database connection setup
+|   |   main.py                   <-- FastAPI entry point
+|   |   README.md                 <-- API documentation
 |   |
-|   \---database                  <-- Database components
-|       |   crud.py               <-- Database CRUD operations
+|   \---database                  <-- Database module
+|       |   crud.py               <-- CRUD operations
 |       |   deps.py               <-- Dependency injection
 |       |   models.py             <-- SQLAlchemy models
-|       |   README.md             <-- Database module documentation
+|       |   README.md             <-- Database module docs
 |       |   schema.py             <-- Pydantic schemas
-|       |   session.py            <-- Database session management
-|       |   __init__.py           <-- Package initialization and exports
+|       |   session.py            <-- Session management
+|       |   __init__.py           <-- Package init
 |       |
 |       \---migrations            <-- Alembic migrations
-|           |   env.py            <-- Alembic environment configuration
-|           |   README.md         <-- Migrations documentation
-|           |   script.py.mako    <-- Migration script template
+|           |   env.py            <-- Alembic config
+|           |   README.md         <-- Migrations docs
+|           |   script.py.mako    <-- Migration template
 |           |
-|           \---versions          <-- Migration version scripts
-|                   README.md     <-- Versions directory documentation
+|           \---versions          <-- Migration scripts
+|                   README.md     <-- Versions docs
 |
-+---assets                        <-- Contains static assets (images, styles, etc.)
-|       logo.png                  <-- Project logo image
-|       README.md                 <-- Assets directory documentation
++---assets                        <-- Static assets (images, styles)
+|       logo.png                  <-- Project logo
+|       README.md                 <-- Assets docs
 |
-+---data                          <-- Directory for storing datasets
-|       original_dataset.csv      <-- Example dataset for model training
-|       README.md                 <-- Data directory documentation
++---data                          <-- Datasets
+|       original_dataset.csv      <-- Example dataset
+|       README.md                 <-- Data docs
 |
-+---docker                        <-- Contains Docker configuration files
-|       Dockerfile                <-- Dockerfile for building the API service
-|       Dockerfile.jupyter        <-- Dockerfile for setting up Jupyter Notebook
-|       entrypoint.sh             <-- Container startup script
-|       README.md                 <-- Docker setup documentation
++---docker                        <-- Docker configs
+|       Dockerfile                <-- API Dockerfile
+|       Dockerfile.jupyter        <-- Jupyter Dockerfile
+|       entrypoint.sh             <-- Startup script
+|       README.md                 <-- Docker docs
 |
-+---models                        <-- Stores trained machine learning models
-|       ml_model.pkl              <-- Serialized ML model
-|       README.md                 <-- Models directory documentation
++---models                        <-- Trained ML models
+|       ml_model.pkl              <-- Serialized model
+|       README.md                 <-- Models docs
 |
-+---notebooks                     <-- Jupyter notebooks for experiments and analysis
-|       01_data_exploration.ipynb <-- Notebook for California Housing data exploration and analysis
-|       02_model_training.ipynb   <-- Notebook for training and evaluating the regression model
-|       README.md                 <-- Notebooks directory documentation
++---notebooks                     <-- Jupyter notebooks
+|       01_data_exploration.ipynb <-- Data exploration
+|       02_model_training.ipynb   <-- Model training
+|       README.md                 <-- Notebooks docs
 |
-+---scripts                       <-- Contains utility scripts
-|       db_setup.py               <-- Script for setting up the database
-|       train.py                  <-- Script for training models
-|       README.md                 <-- Scripts directory documentation
++---scripts                       <-- Utility scripts
+|       db_setup.py               <-- DB setup
+|       train.py                  <-- Model training
+|       README.md                 <-- Scripts docs
 |
-+---tests                         <-- Contains automated tests
-|       __init__.py               <-- Initializes the tests package
-|       test_api.py               <-- API endpoint tests
-|       README.md                 <-- Tests directory documentation
++---tests                         <-- Automated tests
+|       __init__.py               <-- Test package init
+|       test_api.py               <-- API tests
+|       README.md                 <-- Tests docs
 |
-|   .dockerignore                 <-- Specifies files to exclude from Docker builds
-|   .gitignore                    <-- Specifies files to ignore in Git version control
-|   alembic.ini                   <-- Alembic configuration
-|   docker-compose.yml            <-- Docker Compose configuration
-|   LICENSE                       <-- License information for the project
-|   README.md                     <-- Project overview and instructions
-|   requirements.txt              <-- Lists Python dependencies
+|   .dockerignore                 <-- Docker ignore
+|   .gitignore                    <-- Git ignore
+|   alembic.ini                   <-- Alembic config
+|   docker-compose.yml            <-- Docker Compose
+|   LICENSE                       <-- License
+|   README.md                     <-- Project overview
+|   requirements.txt              <-- Python dependencies
 ```
 
 # 2. Project Structure
@@ -218,87 +214,87 @@ Folder PATH listing
 ## 2.1. Production Environment (Dockerization)
 
 - **docker/Dockerfile**  
-  Dockerfile for building the FastAPI application container. It installs the dependencies required for serving the model and connecting to PostgreSQL in a production environment.
+  Dockerfile for building the FastAPI app container. Installs all dependencies for serving the model and connecting to PostgreSQL in production.
 
 - **docker/Dockerfile.jupyter**  
-  Dockerfile for building the Jupyter Notebook container. It installs additional dependencies for interactive development and experimentation, including PostgreSQL client libraries.
+  Dockerfile for the Jupyter Notebook container. Installs extra dependencies for interactive development, including PostgreSQL client libraries.
 
 - **docker-compose.yml**  
   Defines three services:
-  - `web`: Runs the FastAPI application, exposing it on port 8000.
-  - `jupyter`: Runs a Jupyter Notebook server accessible on port 8888.
-  - `db`: Runs PostgreSQL database for storing predictions.
+  - `web`: Runs the FastAPI app on port 8000.
+  - `jupyter`: Runs a Jupyter Notebook server on port 8888.
+  - `db`: Runs the PostgreSQL database for storing predictions.
   
-  The project uses volume mounts to ensure data persistence and code accessibility across containers.
+  Volume mounts are used to persist data and make code accessible across containers.
 
 ## 2.2. Machine Learning Components
 
 - **models/ml_model.pkl**  
-  A pre-trained machine learning model for California Housing price prediction.
+  Pre-trained model for California Housing price prediction.
 
 - **scripts/train.py**  
-  A training script that loads the California Housing dataset, trains a linear regression model, evaluates its performance using MSE, RMSE, and R² metrics, and saves the trained model.
+  Script that loads the California Housing dataset, trains a linear regression model, evaluates it (MSE, RMSE, R²), and saves the model.
   
 - **app/main.py**  
-  The FastAPI application that loads the model and exposes several endpoints for making predictions and accessing the database.
+  FastAPI app that loads the model and exposes endpoints for predictions and database access.
 
 ## 2.3. Database Integration Components
 
 - **app/database/**  
-  Contains all the database-related components:
-  - **models.py**: Defines SQLAlchemy ORM model for storing predictions.
-  - **schema.py**: Defines Pydantic models for request/response validation.
-  - **crud.py**: Implements database operations for creating and retrieving predictions.
-  - **session.py**: Manages database session creation and configuration.
-  - **deps.py**: Provides dependency injection for FastAPI.
+  All database-related code:
+  - **models.py**: SQLAlchemy ORM model for predictions.
+  - **schema.py**: Pydantic models for validation.
+  - **crud.py**: CRUD operations for predictions.
+  - **session.py**: Session management.
+  - **deps.py**: FastAPI dependency injection.
 
 - **scripts/db_setup.py**  
-  A script for setting up the PostgreSQL database and creating necessary tables.
+  Script for initializing the PostgreSQL database and creating tables.
 
 ## 2.4. Testing Components
 
 - **tests/**  
-  Contains automated tests for the API endpoints and database operations:
-  - Tests for health check and root endpoints
-  - Tests for prediction endpoint and database storage
-  - Tests for retrieving predictions
+  Automated tests for API and database:
+  - Health check and root endpoint tests
+  - Prediction and storage tests
+  - Retrieval tests
   - Error handling tests
 
 # 3. Project Files and Folders Overview
 
 - **app/**  
-  Contains the main application code:
-  - **main.py:** Main FastAPI application with endpoints and model loading.
-  - **config.py:** Application configuration settings using Pydantic.
-  - **database.py:** Database connection configuration.
-  - **database/:** Database components for PostgreSQL integration.
+  Main application code:
+  - **main.py:** FastAPI app and model loading
+  - **config.py:** App settings
+  - **database.py:** DB connection
+  - **database/:** PostgreSQL integration
 
 - **assets/**  
-  Contains static assets like images and styles, including the project logo.
+  Static assets (images, styles, logo)
 
 - **data/**  
-  Directory for storing datasets used in the project, including the California Housing dataset.
+  Datasets, including California Housing data
 
 - **docker/**  
-  Contains Docker configuration files:
-  - **Dockerfile:** Builds the FastAPI API container.
-  - **Dockerfile.jupyter:** Builds the Jupyter Notebook container.
+  Docker configuration files:
+  - **Dockerfile:** API container
+  - **Dockerfile.jupyter:** Jupyter container
 
 - **models/**  
-  Stores trained machine learning models, specifically the housing price regression model.
+  Trained ML models (regression model)
 
 - **notebooks/**  
-  Jupyter notebooks for experiments and analysis:
-  - **01_data_exploration.ipynb:** Explores the California Housing dataset with visualizations and statistical analysis
-  - **02_model_training.ipynb:** Develops and trains a regression model for housing price prediction, with model evaluation and serialization
+  Jupyter notebooks:
+  - **01_data_exploration.ipynb:** Data exploration
+  - **02_model_training.ipynb:** Model training and evaluation
 
 - **scripts/**  
-  Contains utility scripts:
-  - **train.py:** Script for training the ML model.
-  - **db_setup.py:** Script for setting up the PostgreSQL database.
+  Utility scripts:
+  - **train.py:** Model training
+  - **db_setup.py:** DB setup
 
 - **tests/**  
-  Contains automated tests for the application.
+  Automated tests
 
 # 4. How to Use and Test the Project
 
@@ -315,21 +311,21 @@ Folder PATH listing
    docker-compose up --build
    ```
 
-This will start three containers:
-- FastAPI application: available at http://localhost:8000
-- PostgreSQL database: available at localhost:5432
-- Jupyter Notebook: available at http://localhost:8888
+This will launch three containers:
+- FastAPI app: http://localhost:8000
+- PostgreSQL: localhost:5432
+- Jupyter Notebook: http://localhost:8888
 
 ## 4.2. Test the API Endpoints
 
-Once the application is running, you can test the endpoints:
+Once running, test the endpoints:
 
-1. Swagger UI documentation:
+1. Swagger UI docs:
    ```
    http://localhost:8000/docs
    ```
 
-2. Make a prediction using curl:
+2. Make a prediction with curl:
    ```bash
    curl -X 'POST' \
      'http://localhost:8000/predict' \
@@ -346,14 +342,14 @@ Once the application is running, you can test the endpoints:
      }'
    ```
 
-3. Get all predictions:
+3. Retrieve all predictions:
 ```bash
    curl -X 'GET' 'http://localhost:8000/predictions'
 ```
 
 ## 4.3. Run the Tests
 
-To run the automated tests:
+To execute automated tests:
 
 ```bash
 docker-compose exec web pytest tests/
@@ -361,78 +357,78 @@ docker-compose exec web pytest tests/
 
 ## 4.4. Use Jupyter for Development
 
-Jupyter Notebook provides an interactive environment for model development, data exploration, and experimentation. You have two options to work with the Jupyter notebooks:
+Jupyter Notebook offers an interactive space for model development, data exploration, and experimentation. You can use it in two ways:
 
 ### 4.4.1. Access Options
 
-1. **Through IDE (Recommended)**:
+1. **Via IDE (Recommended):**
+   
+      ○ For VS Code:
+      
+         a. Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (Mac)
+         b. Select "Dev Containers: Attach to Running Container..."
+         c. Choose `ml_api_with_postgresql_integration-jupyter-1`
+         d. When prompted, open `/app`
+         e. Work with notebooks in VS Code with all dependencies
+      
+      ○ For Cursor:
+      
+         a. Click the Remote Explorer icon (or `Ctrl+Shift+P` and search "Attach to Running Container")
+         b. Select `ml_api_with_postgresql_integration-jupyter-1`
+         c. Open `/app` when prompted
+         d. Work with notebooks in Cursor with all dependencies
 
-   ○ For VS Code:
+2. **Via Web Browser:**
    
-      a. Press `Ctrl+Shift+P` (Windows/Linux) or `Cmd+Shift+P` (Mac)
-      b. Select "Dev Containers: Attach to Running Container..."
-      c. Choose the container named `ml_api_with_postgresql_integration-jupyter-1`
-      d. When prompted to open a folder, navigate to `/app`
-      e. You can now work with notebooks directly in VS Code with all dependencies available
-   
-   ○ For Cursor:
-   
-      a. Click the Remote Explorer icon in the sidebar (or press `Ctrl+Shift+P` and search for "Attach to Running Container")
-      b. Select the container named `ml_api_with_postgresql_integration-jupyter-1`
-      c. When prompted to open a folder, navigate to `/app`
-      d. You can now work with notebooks directly in Cursor with all dependencies available
-
-2. **Through Web Browser**:
-   
-   ○ Open your browser and navigate to http://localhost:8888
-   ○ All required dependencies are already installed
-   ○ Changes are automatically saved to your local files through Docker volumes
+   ○ Go to http://localhost:8888
+   ○ All dependencies are pre-installed
+   ○ Changes are saved to your local files via Docker volumes
 
 ### 4.4.2. Selecting the Correct Kernel
 
-When opening a notebook, make sure to select the correct kernel:
+When opening a notebook:
 
-1. For a new notebook, click on "Select Kernel" in the top right
-2. Choose "Python 3.10.16 (/usr/local/bin/python)" from the dropdown
-3. This kernel has access to all dependencies installed in the container
+1. For a new notebook, click "Select Kernel" (top right)
+2. Choose "Python 3.10.16 (/usr/local/bin/python)"
+3. This kernel has all required dependencies
 
 ### 4.4.3. Verifying the Container Environment
 
-If you want to confirm you're working inside the container, run the following code in a notebook cell:
+To confirm you're inside the container, run in a notebook cell:
 
 ```python
 # Check Python version
 !python --version
 
-# View container environment variables
+# View environment variables
 import os
 print(os.environ)
 
-# Verify the operating system
+# Check OS
 !cat /etc/os-release
 ```
 
-The output should show:
+You should see:
 - Python 3.10.x
 - Container-specific environment variables (including DATABASE_URL with 'db' hostname)
-- Debian Linux as the operating system
+- Debian Linux as the OS
 
 ### 4.4.4. Working with Notebooks
 
-The provided notebooks are:
+Provided notebooks:
 
-* `notebooks/01_data_exploration.ipynb`: Explores the California Housing dataset with visualizations and statistical analysis
-* `notebooks/02_model_training.ipynb`: Develops and trains a regression model for housing price prediction, with model evaluation and serialization
+* `notebooks/01_data_exploration.ipynb`: Data exploration and visualization
+* `notebooks/02_model_training.ipynb`: Model development, evaluation, and serialization
 
 ### 4.4.5. Accessing the Database from Notebooks
 
-To connect to the PostgreSQL database from your notebook:
+To connect to PostgreSQL from a notebook:
 
 ```python
 from sqlalchemy import create_engine
 import os
 
-# Get database URL from environment variable
+# Get DB URL from environment
 db_url = os.environ.get("DATABASE_URL")
 
 # Create engine
@@ -447,40 +443,40 @@ df.head()
 ### 4.4.6. Troubleshooting
 
 1. **Kernel not starting**: 
-   - Verify the container is running with `docker ps`
-   - Check container logs with `docker logs ml_api_with_postgresql_integration-jupyter-1`
+   - Check containers with `docker ps`
+   - View logs: `docker logs ml_api_with_postgresql_integration-jupyter-1`
 
 2. **Missing dependencies**:
-   - Dependencies are installed from requirements.txt. If you need additional packages:
+   - All dependencies are in requirements.txt. To add more:
      ```python
      !pip install package_name
      ```
 
 3. **Database connection issues**:
-   - Ensure the PostgreSQL container is running
-   - Verify the DATABASE_URL environment variable with `os.environ.get("DATABASE_URL")`
+   - Ensure PostgreSQL is running
+   - Check `DATABASE_URL` with `os.environ.get("DATABASE_URL")`
 
-Note: When working through the IDE, you're actually working inside the container where all dependencies are already installed. This ensures consistency between development and production environments.
+Note: When using the IDE, you are working inside the container, ensuring consistency between development and production.
 
 # 5. Database Setup
 
-The project uses PostgreSQL for storing prediction data. There are two approaches to database schema management:
+This project uses PostgreSQL for storing predictions. There are two ways to manage the schema:
 
 ## 5.1. Direct Table Creation
 
-By default, this project uses direct table creation for simplicity:
+By default, tables are created directly for simplicity:
 
-1. Tables are automatically created at application startup using SQLAlchemy's `Base.metadata.create_all()` method in `app/main.py`.
-2. The custom setup script `scripts/db_setup.py` runs during container initialization to ensure tables exist.
+1. Tables are auto-created at app startup using SQLAlchemy's `Base.metadata.create_all()` in `app/main.py`.
+2. The `scripts/db_setup.py` script runs during container startup to ensure tables exist.
 
-This approach was chosen for simplicity in a containerized environment where databases are often recreated from scratch.
+This is ideal for containerized environments where databases are often rebuilt.
 
 ## 5.2. Using Migrations
 
-While the project is configured with Alembic for migrations, it currently doesn't use migration scripts. To switch to a migration-based approach:
+Alembic is set up for migrations, but migration scripts are not used by default. To use migrations:
 
-1. Modify the SQLAlchemy models in `app/database/models.py`
-2. Generate a migration script:
+1. Edit SQLAlchemy models in `app/database/models.py`
+2. Generate a migration:
    ```bash
    alembic revision --autogenerate -m "Description"
    ```
@@ -491,90 +487,90 @@ While the project is configured with Alembic for migrations, it currently doesn'
 
 # 6. Database Development Best Practices
 
-When working with databases in a containerized environment, you have multiple approaches for database interaction. This section covers best practices for database development within Docker.
+When developing with databases in Docker, you have several options for interaction. This section outlines best practices.
 
 ## 6.1. Database Interaction Approaches
 
 ### 6.1.1. Using Jupyter Notebooks
 
 **Advantages:**
-- **All-in-one environment**: Code execution, data visualization, and database interaction in one place
-- **Documentation as you go**: Notebooks serve as self-documenting SQL exploratory sessions
-- **Visualization integration**: Easily plot query results using pandas and matplotlib
-- **Reproducibility**: Queries and their results are saved together in the notebook
+- Unified environment for code, visualization, and database
+- Self-documenting SQL sessions
+- Easy result visualization with pandas/matplotlib
+- Reproducible queries and results
 
 **Best for:**
-- Data exploration and analysis
-- Creating data processing pipelines
-- Prototyping database operations
+- Data exploration
+- Data processing pipelines
+- Prototyping DB operations
 - Learning and experimentation
 
 ### 6.1.2. Using VS Code/Cursor Database Extensions
 
 **Advantages:**
-- **Purpose-built tools**: Specialized features like schema visualization and query optimization
-- **SQL-focused interface**: Better syntax highlighting and autocompletion
-- **Database administration**: Easier to perform administrative tasks
-- **Separate concerns**: Keeps database work distinct from application code
+- Specialized features (schema view, query optimization)
+- SQL-focused interface
+- Easier DB administration
+- Keeps DB work separate from app code
 
 **Best for:**
-- Schema design and management
-- Complex query development and testing
-- Database administration tasks
-- Day-to-day database operations
+- Schema design
+- Complex queries
+- DB administration
+- Routine DB operations
 
 ## 6.2. Recommended Hybrid Approach
 
-The most effective workflow combines both approaches:
+The most effective workflow combines both methods:
 
-1. **Use VS Code/Cursor Database Extensions for:**
-   - Initial database setup and schema management
-   - Complex SQL query development
-   - Production database migrations
-   - Database administration tasks
+1. **VS Code/Cursor Extensions for:**
+   - Initial setup and schema management
+   - Complex queries
+   - Production migrations
+   - DB administration
 
-2. **Use Jupyter Notebooks for:**
-   - Data exploration and analysis
-   - Combining SQL queries with data processing
-   - Documenting database workflows with explanations
-   - Visualizing query results
-   - Prototyping database interactions for your ML pipeline
+2. **Jupyter Notebooks for:**
+   - Data exploration
+   - SQL + data processing
+   - Documenting DB workflows
+   - Visualizing results
+   - Prototyping ML pipeline DB interactions
 
 ## 6.3. Setting Up Database Tools
 
 ### 6.3.1. VS Code/Cursor Database Extension Setup
 
-1. Install the `Database Client` or `SQLTools` + `SQLTools PostgreSQL/Cockroach Driver` extensions in VS Code/Cursor
-  - `Database Client`: By cweijan
-  - `SQLTools`: By Matheus Teixeira
-  - `SQLTools PostgreSQL/Cockroach Driver`: By mtxr
+1. Install `Database Client` or `SQLTools` + `SQLTools PostgreSQL/Cockroach Driver` in VS Code/Cursor
+  - `Database Client`: by cweijan
+  - `SQLTools`: by Matheus Teixeira
+  - `SQLTools PostgreSQL/Cockroach Driver`: by mtxr
 
-2. Configure a new connection using these settings:
+2. Configure a new connection:
    - Host: `localhost`
-   - Port: `5432` (the forwarded port)
+   - Port: `5432`
    - Username: `user`
    - Password: `password`
    - Database: `ml_api_db`
 
-3. `Database Client` vs. `SQLTools` + `SQLTools PostgreSQL/Cockroach Driver`
-  - `Database Client`: if you prefer a simple GUI, easy browsing, and minimal setup.
-  - `SQLTools` + `SQLTools PostgreSQL/Cockroach Driver`: if you want powerful code integration, deep customization, and adapter flexibility.
+3. **Database Client** vs. **SQLTools + PostgreSQL Driver**
+  - `Database Client`: simple GUI, easy browsing, minimal setup
+  - `SQLTools` + driver: advanced features, deep code integration
 
   **Option 1: Database Client**
-  - Single installation - All-in-one solution with built-in PostgreSQL support
-  - **Best for:** Visual learners, beginners, and those who prioritize ease of use
-  - Modern interface with intuitive data exploration features
-  - Simplified connection setup with fewer configuration steps
-  - Better table visualization with interactive data grid view
+  - All-in-one, built-in PostgreSQL support
+  - **Best for:** Visual learners, beginners
+  - Modern UI, intuitive data exploration
+  - Simple setup
+  - Interactive data grid
   
-  **Option 2: SQLTools + SQLTools PostgreSQL/Cockroach Driver**
-  - Two-part installation - Core SQLTools extension plus PostgreSQL/Cockroach Driver
-  - **Best for:** Those comfortable with SQL who need advanced features
-  - More comprehensive SQL tooling with deeper code integration
-  - Robust intellisense & linting capabilities
-  - Highly extensible with plugins and fine-grained configuration
+  **Option 2: SQLTools + PostgreSQL Driver**
+  - Two-part install
+  - **Best for:** Advanced users
+  - Comprehensive SQL tooling
+  - Robust intellisense
+  - Highly extensible
   
-  Both options will connect to the project's PostgreSQL database using the same connection parameters. Consider your learning style and preferences when choosing - visual, GUI-focused learners may prefer Database Client, while code-centric, customization-focused learners might prefer SQLTools.
+  Both connect to the project's PostgreSQL DB with the same settings. Choose based on your learning style—GUI for visual learners, code-centric for advanced users.
 
   **Feature Comparison:**
 
@@ -597,7 +593,7 @@ from sqlalchemy import create_engine, text
 import pandas as pd
 import os
 
-# Get database URL from environment variable
+# Get DB URL from environment
 db_url = os.environ.get("DATABASE_URL")
 engine = create_engine(db_url)
 
@@ -613,29 +609,29 @@ df = run_query("SELECT * FROM predictions LIMIT 10")
 df.describe()  # Quick statistics
 ```
 
-This hybrid approach gives you the best of both worlds - specialized database tools when needed and seamless integration with your data science workflow in notebooks.
+This hybrid workflow gives you the best of both: specialized DB tools and seamless notebook integration for data science.
 
 # 7. Working with PostgreSQL Database
 
-Unlike SQLite which uses a single file, PostgreSQL is a client-server database system that manages data internally. This section explains how data is stored and accessed in this project.
+Unlike SQLite, which uses a single file, PostgreSQL is a client-server system that manages data internally. Here's how data is stored and accessed in this project.
 
 ## 7.1. Database Storage in PostgreSQL
 
-When you collect and store data using this API:
+When you store data via this API:
 
-1. **Data Storage**: PostgreSQL stores all data in its internal directory structure, which is mounted as a Docker volume (`postgres_data:/var/lib/postgresql/data/`).
+1. **Data Storage**: PostgreSQL keeps all data in its internal directory, mounted as a Docker volume (`postgres_data:/var/lib/postgresql/data/`).
 
-2. **No Single Database File**: You won't see a database file in your project directory. Instead, PostgreSQL manages its data files internally.
+2. **No Single Database File**: There is no database file in your project directory. PostgreSQL manages its own data files.
 
-3. **Persistence**: The Docker volume ensures data persists even if containers are stopped or rebuilt.
+3. **Persistence**: The Docker volume ensures data is retained even if containers are stopped or rebuilt.
 
 ## 7.2. Accessing PostgreSQL Data
 
-There are multiple ways to access the stored data:
+You can access stored data in several ways:
 
-1. **Through API Endpoints**: Use the provided API endpoints (`/predictions`) to retrieve data.
+1. **API Endpoints**: Use `/predictions` to retrieve data.
 
-2. **Direct Database Access**: Connect to the PostgreSQL instance:
+2. **Direct DB Access**: Connect to PostgreSQL:
    ```
    Host: localhost
    Port: 5432
@@ -644,19 +640,19 @@ There are multiple ways to access the stored data:
    Database: ml_api_db
    ```
 
-3. **From Jupyter Notebooks**: Use the SQLAlchemy code pattern provided in section 6.3.2.
+3. **Jupyter Notebooks**: Use the SQLAlchemy pattern in section 6.3.2.
 
-4. **Using Database GUIs**: Connect with tools like pgAdmin, DBeaver, or database extensions in VS Code/Cursor.
+4. **Database GUIs**: Use tools like pgAdmin, DBeaver, or VS Code/Cursor extensions.
 
 ## 7.3. Database Inspection Commands
 
-When the containers are running, you can inspect the database using:
+With containers running, inspect the DB:
 
 ```bash
-# Connect to PostgreSQL container's shell
+# Enter PostgreSQL container
 docker exec -it ml_api_with_postgresql_integration-db-1 bash
 
-# Connect to PostgreSQL with psql client
+# Connect with psql
 psql -U user -d ml_api_db
 
 # Useful psql commands:
@@ -668,38 +664,38 @@ psql -U user -d ml_api_db
 
 ## 7.4. Backing Up and Restoring Data
 
-To back up and restore your PostgreSQL data:
+To back up and restore PostgreSQL data:
 
 ```bash
-# Backup: from host machine
+# Backup
 docker exec -t ml_api_with_postgresql_integration-db-1 pg_dump -U user ml_api_db > backup.sql
 
-# Restore: to host machine
+# Restore
 cat backup.sql | docker exec -i ml_api_with_postgresql_integration-db-1 psql -U user -d ml_api_db
 ```
 
-The client-server architecture of PostgreSQL provides benefits including better performance, concurrent access, and more robust data management compared to file-based databases.
+PostgreSQL's client-server design offers advantages like better performance, concurrent access, and robust data management compared to file-based databases.
 
 # 8. Summary
 
-This project demonstrates how to build a machine learning API with PostgreSQL integration using FastAPI and Docker. It provides a complete framework for:
+This project demonstrates how to build a machine learning API with PostgreSQL using FastAPI and Docker. It provides a full framework for:
 
-1. Training and serving machine learning models
-2. Storing predictions in a PostgreSQL database
+1. Training and serving ML models
+2. Storing predictions in PostgreSQL
 3. Retrieving prediction history
-4. Running everything in Docker containers for reproducibility and scalability
+4. Running everything in Docker for reproducibility and scalability
 
-The project is designed to be easily adaptable for different machine learning tasks and datasets while maintaining a strong focus on engineering best practices.
+The setup is easily adaptable for different ML tasks and datasets, with a strong focus on engineering best practices.
 
 # 9. For Additional Questions
 
-If you have any questions or encounter issues while working with this project, here are several resources to help you:
+If you have questions or run into issues, here are resources to help:
 
-- **GitHub Issues**: Open an issue in the GitHub repository
-- **Documentation**: Refer to the documentation in the respective README files within each directory
+- **GitHub Issues**: Open an issue in the repository
+- **Documentation**: See README files in each directory
 - **External Resources**:
   - [FastAPI Documentation](https://fastapi.tiangolo.com/)
   - [SQLAlchemy Documentation](https://docs.sqlalchemy.org/)
   - [PostgreSQL Documentation](https://www.postgresql.org/docs/)
   - [Docker Documentation](https://docs.docker.com/)
-- **Contact**: Feel free to reach out to the maintainers of this project
+- **Contact**: Reach out to the project maintainers
